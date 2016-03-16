@@ -26,11 +26,10 @@ public class ChequingAccount extends BankAccountV4
     /*	Charge a $0.75 fee per withdrawal. */
     public boolean withdraw(double amount)
     {
-        boolean isValid = amount < this.balance;
+        boolean isValid = super.withdraw(amount);
         if (isValid) // only withdraw if sufficient funds
         {
             this.fees += 0.75;
-            this.balance -= amount;
         }
         return isValid;
     }
@@ -38,9 +37,7 @@ public class ChequingAccount extends BankAccountV4
     /*	After the balance, print the fees total. */
     public String toString()
     {
-        return "Name: " + name + "; Account No.: " + number +
-                "; Balance: $" + String.format("%8.2f", this.balance) +
-                "; Fees: $" + String.format("%8.2f", this.fees);
+        return super.toString() + "; Fees: $" + String.format("%8.2f", this.fees);
     }
 
 

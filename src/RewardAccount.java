@@ -16,7 +16,7 @@ public class RewardAccount extends BankAccountV4
         points = 0;
     }
 
-    public double getPointBalance()
+    public int getPointBalance()
     {
         return points;
     }
@@ -27,15 +27,13 @@ public class RewardAccount extends BankAccountV4
     public void deposit(double amount)
     {
         this.points += 100;
-        this.balance += amount;
+        super.deposit(amount);
     }
 
     /*	After the balance, print the fees total. */
     public String toString()
     {
-        return "Name: " + name + "; Account No.: " + number +
-                "; Balance: $" + String.format("%8.2f", this.balance) +
-                "; Points: " + this.points;
+        return super.toString() + "; Points: " + this.points;
     }
 
 
